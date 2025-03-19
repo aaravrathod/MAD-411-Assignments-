@@ -1,5 +1,6 @@
 package com.example.assignment6aaravrathid
 
+
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
@@ -13,6 +14,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -70,13 +72,13 @@ class MainActivity : AppCompatActivity() {
 
         detailsButton.setOnClickListener {
             if (expenseList.isNotEmpty()) {
-                val data = expenseList[0]  // Select the data to pass (in this case, the first item)
-                Log.d("MainActivity", "Data to pass: $data")  // Confirm data is correct
+                val data = expenseList[0]
+                Log.d("MainActivity", "Data to pass: $data")
 
                 val intent = Intent(this, ExpenseDetailActivity::class.java)
-                intent.putExtra("DataDetail", data)  // Passing the object via intent
+                intent.putExtra("DataDetail", data)
 
-                // Start the new activity
+
                 startActivity(intent)
                 Log.d("MainActivity", "Starting ExpenseDetailActivity")
             } else {
@@ -91,9 +93,11 @@ class MainActivity : AppCompatActivity() {
             intent.data = Uri.parse(url)
             startActivity(intent)
         }
-
+//        addFooterFragment()
+//       addHeaderFragment()
 
     }
+
 
     override fun onStart() {
         super.onStart()
@@ -122,5 +126,21 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+    //I tried footer but it does not work. I dont know why
+//    private fun addHeaderFragment(){
+//        val headerFragment=HeaderFragment()
+//        supportFragmentManager.beginTransaction()
+//            .replace(R.id.header_fragment,headerFragment)
+//            .commit()
+//    }
+//
+//    private fun addFooterFragment(){
+//        val footerFragment=FooterFragment()
+//        supportFragmentManager.beginTransaction()
+//            .replace(R.id.footer_fragment, footerFragment)
+//            .commit()
+//    }
+
+
 
 }
