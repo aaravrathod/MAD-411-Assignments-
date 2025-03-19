@@ -2,6 +2,7 @@ package com.example.assignment6aaravrathid
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -24,6 +25,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var amount: EditText
     private lateinit var addButton: Button
     private lateinit var detailsButton:Button
+    private lateinit var tipButton: Button
 
 
     @SuppressLint("MissingInflatedId")
@@ -36,6 +38,7 @@ class MainActivity : AppCompatActivity() {
         amount = findViewById(R.id.amount)
         addButton = findViewById(R.id.add)
         detailsButton=findViewById(R.id.showDetails)
+        tipButton=findViewById(R.id.tip)
 
 
 
@@ -81,6 +84,13 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        tipButton.setOnClickListener{
+            var url =
+                "https://www.manulife.ca/personal/plan-and-learn/healthy-finances/financial-planning/ten-simple-money-management-tips.html"
+            var intent = Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse(url)
+            startActivity(intent)
+        }
 
 
     }
