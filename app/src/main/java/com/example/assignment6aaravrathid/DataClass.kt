@@ -1,5 +1,7 @@
 package com.example.assignment6aaravrathid
 
- class DataClass ( val name:String, val amount:String)
+import java.io.Serializable
+
+data class DataClass ( val name:String, val amount:String):Serializable
 
 

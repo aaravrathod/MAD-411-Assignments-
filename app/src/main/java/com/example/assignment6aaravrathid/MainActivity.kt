@@ -1,5 +1,7 @@
 package com.example.assignment6aaravrathid
 
+import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -24,6 +26,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var detailsButton:Button
 
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -32,6 +35,8 @@ class MainActivity : AppCompatActivity() {
         expense = findViewById(R.id.expense)
         amount = findViewById(R.id.amount)
         addButton = findViewById(R.id.add)
+        detailsButton=findViewById(R.id.showDetails)
+
 
 
         expenseList = mutableListOf()
@@ -60,9 +65,22 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        detailsButton.setOnClickListener{
+        detailsButton.setOnClickListener {
+            if (expenseList.isNotEmpty()) {
+                val data = expenseList[0]  // Select the data to pass (in this case, the first item)
+                Log.d("MainActivity", "Data to pass: $data")  // Confirm data is correct
 
+                val intent = Intent(this, ExpenseDetailActivity::class.java)
+                intent.putExtra("DataDetail", data)  // Passing the object via intent
+
+                // Start the new activity
+                startActivity(intent)
+                Log.d("MainActivity", "Starting ExpenseDetailActivity")
+            } else {
+                Log.d("MainActivity", "Expense list is empty")
+            }
         }
+
 
 
     }
