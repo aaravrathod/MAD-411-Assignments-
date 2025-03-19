@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/expenseDetail"
+        android:layout_width="310dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="51dp"
+        android:layout_marginBottom="328dp"
+        android:text="Expense Name"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/amountDetail" />
+
+    <TextView
+        android:id="@+id/amountDetail"
+        android:layout_width="310dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="42dp"
+        android:layout_marginEnd="51dp"
+        android:layout_marginBottom="81dp"
+        android:text="Amount"
+        app:layout_constraintBottom_toTopOf="@+id/expenseDetail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dateDetail" />
+
+    <TextView
+        android:id="@+id/dateDetail"
+        android:layout_width="310dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="67dp"
+        android:layout_marginTop="94dp"
+        android:layout_marginEnd="34dp"
+        android:layout_marginBottom="42dp"
+        android:text="Date"
+        app:layout_constraintBottom_toTopOf="@+id/amountDetail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

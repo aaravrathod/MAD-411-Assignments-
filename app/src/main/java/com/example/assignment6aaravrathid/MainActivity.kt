@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var expense: EditText
     private lateinit var amount: EditText
     private lateinit var addButton: Button
+    private lateinit var detailsButton:Button
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,6 +57,10 @@ class MainActivity : AppCompatActivity() {
             expense.text.clear()
             amount.text.clear()
 
+
+        }
+
+        detailsButton.setOnClickListener{
 
         }
 

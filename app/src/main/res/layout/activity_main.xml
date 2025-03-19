@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".activity_main.xml">
 
+
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/expense"
         android:layout_width="match_parent"
@@ -18,7 +19,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/amount"
@@ -30,13 +32,14 @@
 
         app:layout_constraintBottom_toTopOf="@+id/add"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/add"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="93dp"
+        android:layout_height="48dp"
         android:layout_marginStart="150dp"
         android:layout_marginEnd="170dp"
         android:layout_marginBottom="440dp"
@@ -58,6 +61,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <CalendarView
+        android:id="@+id/calendarView2"
+        android:layout_width="115dp"
+        android:layout_height="132dp"
+        android:layout_marginStart="269dp"
+        android:layout_marginTop="118dp"
+        android:layout_marginEnd="27dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerview1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/amount" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="53dp"
+        android:layout_marginEnd="42dp"
+        android:layout_marginBottom="157dp"
+        android:text="Details"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerview1"
+        app:layout_constraintEnd_toStartOf="@+id/add"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/amount" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
