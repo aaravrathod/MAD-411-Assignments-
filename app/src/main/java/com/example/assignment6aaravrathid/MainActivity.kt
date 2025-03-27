@@ -32,11 +32,11 @@ class MainActivity : AppCompatActivity() {
         addButton=findViewById(R.id.add)
 
 
-        expenseList= mutableListOf()
+        //expenseList= mutableListOf()
         adapter=ExpenseAdapter(expenseList)
 
         recyclerView.layoutManager=LinearLayoutManager(this)
-        recyclerView.adapter =adapter;
+        recyclerView.adapter =adapter
 
         fun addExpense() {
             val name = expense.text.toString().trim()
@@ -45,19 +45,15 @@ class MainActivity : AppCompatActivity() {
             expenseList.add(DataClass(name, amount))
             adapter.notifyItemInserted(expenseList.size-1)
 
+            expense.text.clear()
+            this.amount.text.clear()
+
+
         }
-
-
 
         addButton.setOnClickListener{
             addExpense();
-
-
         }
-
-
-
-
 
     }
 }

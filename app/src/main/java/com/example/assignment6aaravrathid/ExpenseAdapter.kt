@@ -35,18 +35,12 @@ class ExpenseAdapter(
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         val expense = expenseList[position]
 
-
         viewHolder.expenseTextView.text = expense.name
         viewHolder.amountTextView.text = expense.amount
 
         viewHolder.deleteButton.setOnClickListener{
             removeItem(position)
         }
-
-
-
-
-
 
     }
 
