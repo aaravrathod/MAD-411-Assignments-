@@ -13,8 +13,7 @@ class ExpenseDetailActivity: AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.expense_details)
 
-        //get the data from the recycle view
-//cuz the Api
+
         val expenseData = intent.getSerializableExtra("DataDetail") as? DataClass
 
         val expenseDetail=findViewById<TextView>(R.id.expenseDetail)

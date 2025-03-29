@@ -8,6 +8,7 @@
     tools:context=".MainActivity">
 
 
+
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/expense"
         android:layout_width="match_parent"
@@ -104,23 +105,24 @@
         app:layout_constraintStart_toEndOf="@+id/add"
         app:layout_constraintTop_toBottomOf="@+id/amount" />
 
+
     <TextView
         android:id="@+id/showDate"
-        android:layout_width="80dp"
-        android:layout_height="27dp"
+        android:layout_width="83dp"
+        android:layout_height="49dp"
         android:layout_marginStart="177dp"
-        android:layout_marginTop="47dp"
+        android:layout_marginTop="31dp"
         android:layout_marginEnd="41dp"
-        android:layout_marginBottom="78dp"
+        android:layout_marginBottom="72dp"
         android:text="No Date Selected"
         app:layout_constraintBottom_toTopOf="@+id/recyclerview1"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toEndOf="@+id/tip"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
-
+        app:layout_constraintTop_toBottomOf="@+id/dateButton" />
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentfooter"
+        android:id="@+id/footer_fragment"
         android:name="com.example.assignment6aaravrathid.FooterFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -134,18 +136,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentheader"
+        android:id="@+id/header_fragment"
         android:name="com.example.assignment6aaravrathid.HeaderFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="167dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="244dp"
-        android:layout_marginBottom="707dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="Aarav Expense App"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -20,7 +20,6 @@ class MainActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener{
 
     private var expenseList: MutableList<DataClass> = mutableListOf<DataClass>()
     private lateinit var adapter: ExpenseAdapter;
-    private lateinit var footerFragment: FooterFragment
     private lateinit var recyclerView: RecyclerView
     private lateinit var expense: EditText
     private lateinit var amount: EditText
@@ -30,6 +29,7 @@ class MainActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener{
 
     private lateinit var dateButton:Button
     private lateinit var dateView: TextView
+    private lateinit var footer:FooterFragment
 
 
     @SuppressLint("MissingInflatedId")
@@ -49,6 +49,15 @@ class MainActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener{
 
         expenseList = mutableListOf()
         adapter = ExpenseAdapter(expenseList)
+
+      var  header=HeaderFragment()
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.header_fragment, header)
+            .commit()
+      footer=FooterFragment()
+         supportFragmentManager.beginTransaction()
+             .replace(R.id.footer_fragment,footer)
+             .commit()
 
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter;
@@ -76,7 +85,7 @@ class MainActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener{
             addExpense();
             expense.text.clear()
             amount.text.clear()
-            showTotal()
+           showFooter()
 
         }
 
@@ -103,9 +112,8 @@ class MainActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener{
             intent.data = Uri.parse(url)
             startActivity(intent)
         }
-        addFooterFragment()
-        footerFragment=FooterFragment()
-       addHeaderFragment()
+       // addFooterFragment()
+
 
     }
 
@@ -137,19 +145,15 @@ class MainActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener{
 
 
     }
-    //I tried footer but it does not work. I dont know why
-    private fun addHeaderFragment(){
-        val headerFragment=HeaderFragment()
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.fragmentheader,headerFragment)
-            .commit()
+
+    private fun totalExpense():Double{
+        return expenseList.sumByDouble { it.amount.toDoubleOrNull()  ?: 0.0 }
     }
 
-    private fun addFooterFragment(){
-        val footerFragment=FooterFragment()
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.fragmentfooter, footerFragment)
-            .commit()
+    private fun  showFooter(){
+        var total=totalExpense()
+        footer.getTotal(total)
+
     }
 
 
@@ -164,13 +168,5 @@ class MainActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener{
         dateView?.setText(selectedDate)
     }
 
-    fun showTotal() {
-        var total = 0.0
-        for (i in expenseList) {
-            total += i.amount.toDoubleOrNull() ?:0.0
-        }
-//        val footer=supportFragmentManager.findFragmentById(R.id.fragmentfooter) as? FooterFragment
-//        footer?.getTotal(total)
-        footerFragment.getTotal(total)
-    }
+
 }

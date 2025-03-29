@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/footerTV"
+        android:id="@+id/footerfragment"
         android:layout_width="237dp"
         android:layout_height="37dp"
         android:layout_marginStart="74dp"
