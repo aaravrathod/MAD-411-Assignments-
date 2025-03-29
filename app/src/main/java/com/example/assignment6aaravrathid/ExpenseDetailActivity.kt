@@ -19,12 +19,13 @@ class ExpenseDetailActivity: AppCompatActivity() {
 
         val expenseDetail=findViewById<TextView>(R.id.expenseDetail)
         val amountDetail=findViewById<TextView>(R.id.amountDetail)
+        val dateDetail=findViewById<TextView>(R.id.dateDetail)
 
 
         expenseData?.let {
             expenseDetail.text = it.name
             amountDetail.text = it.amount
-
+            dateDetail.text=it.date
         }
     }
 }

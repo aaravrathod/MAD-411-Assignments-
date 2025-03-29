@@ -17,6 +17,8 @@ class ExpenseAdapter(
         val expenseTextView: TextView = view.findViewById(R.id.textView2)
         val amountTextView: TextView = view.findViewById(R.id.textView3)
         val deleteButton: Button = view.findViewById(R.id.button)
+        val dateView:TextView=view.findViewById(R.id.detailDate)
+
 
 
     }
@@ -34,8 +36,10 @@ class ExpenseAdapter(
         val expense = expenseList[position]
 
 
+
         viewHolder.expenseTextView.text = expense.name
         viewHolder.amountTextView.text = expense.amount
+        viewHolder.dateView.text=expense.date
 
         viewHolder.deleteButton.setOnClickListener{
             removeItem(position)

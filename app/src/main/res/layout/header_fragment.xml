@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/header_fragment"
+        android:id="@+id/fragmentheader"
         android:layout_width="305dp"
         android:layout_height="35dp"
         android:layout_marginStart="61dp"

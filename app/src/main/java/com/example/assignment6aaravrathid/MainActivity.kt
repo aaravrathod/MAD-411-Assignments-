@@ -2,32 +2,34 @@ package com.example.assignment6aaravrathid
 
 
 import android.annotation.SuppressLint
+import android.app.DatePickerDialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import java.text.DateFormat
+import java.util.Calendar
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener{
 
     private var expenseList: MutableList<DataClass> = mutableListOf<DataClass>()
     private lateinit var adapter: ExpenseAdapter;
+    private lateinit var footerFragment: FooterFragment
     private lateinit var recyclerView: RecyclerView
     private lateinit var expense: EditText
     private lateinit var amount: EditText
     private lateinit var addButton: Button
     private lateinit var detailsButton:Button
     private lateinit var tipButton: Button
+
+    private lateinit var dateButton:Button
+    private lateinit var dateView: TextView
 
 
     @SuppressLint("MissingInflatedId")
@@ -41,7 +43,8 @@ class MainActivity : AppCompatActivity() {
         addButton = findViewById(R.id.add)
         detailsButton=findViewById(R.id.showDetails)
         tipButton=findViewById(R.id.tip)
-
+        dateButton=findViewById(R.id.dateButton)
+        dateView=findViewById(R.id.showDate)
 
 
         expenseList = mutableListOf()
@@ -50,11 +53,18 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter;
 
+       dateButton.setOnClickListener{
+            val datePicker=com.example.assignment6aaravrathid.DatePicker()
+            datePicker.show(supportFragmentManager,"DATE PICK")
+        }
+        val datePickerFragment = DatePicker()
+        datePickerFragment.show(supportFragmentManager, "datePicker")
+
         fun addExpense() {
             val name = expense.text.toString().trim()
             val amount = amount.text.toString().trim()
 
-            expenseList.add(DataClass(name, amount))
+            expenseList.add(DataClass(name, amount,dateView.text.toString()))
             adapter.notifyItemInserted(expenseList.size - 1)
 
 
@@ -66,7 +76,7 @@ class MainActivity : AppCompatActivity() {
             addExpense();
             expense.text.clear()
             amount.text.clear()
-
+            showTotal()
 
         }
 
@@ -93,8 +103,9 @@ class MainActivity : AppCompatActivity() {
             intent.data = Uri.parse(url)
             startActivity(intent)
         }
-//        addFooterFragment()
-//       addHeaderFragment()
+        addFooterFragment()
+        footerFragment=FooterFragment()
+       addHeaderFragment()
 
     }
 
@@ -127,20 +138,39 @@ class MainActivity : AppCompatActivity() {
 
     }
     //I tried footer but it does not work. I dont know why
-//    private fun addHeaderFragment(){
-//        val headerFragment=HeaderFragment()
-//        supportFragmentManager.beginTransaction()
-//            .replace(R.id.header_fragment,headerFragment)
-//            .commit()
-//    }
-//
-//    private fun addFooterFragment(){
-//        val footerFragment=FooterFragment()
-//        supportFragmentManager.beginTransaction()
-//            .replace(R.id.footer_fragment, footerFragment)
-//            .commit()
-//    }
+    private fun addHeaderFragment(){
+        val headerFragment=HeaderFragment()
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragmentheader,headerFragment)
+            .commit()
+    }
+
+    private fun addFooterFragment(){
+        val footerFragment=FooterFragment()
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragmentfooter, footerFragment)
+            .commit()
+    }
 
 
 
+    override fun onDateSet(p0: android.widget.DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
+        val mCalendar: Calendar = Calendar.getInstance()
+        mCalendar.set(Calendar.YEAR, year)
+        mCalendar.set(Calendar.MONTH, month)
+        mCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+        val selectedDate: String =
+            DateFormat.getDateInstance(DateFormat.FULL).format(mCalendar.getTime())
+        dateView?.setText(selectedDate)
+    }
+
+    fun showTotal() {
+        var total = 0.0
+        for (i in expenseList) {
+            total += i.amount.toDoubleOrNull() ?:0.0
+        }
+//        val footer=supportFragmentManager.findFragmentById(R.id.fragmentfooter) as? FooterFragment
+//        footer?.getTotal(total)
+        footerFragment.getTotal(total)
+    }
 }

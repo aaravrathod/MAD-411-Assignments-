@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity_main.xml">
+    tools:context=".MainActivity">
 
 
     <com.google.android.material.textfield.TextInputEditText
@@ -61,18 +61,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <CalendarView
-        android:id="@+id/calendarView2"
-        android:layout_width="115dp"
-        android:layout_height="132dp"
-        android:layout_marginStart="269dp"
-        android:layout_marginTop="118dp"
-        android:layout_marginEnd="27dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerview1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/amount" />
+
 
     <Button
         android:id="@+id/showDetails"
@@ -98,9 +87,65 @@
         android:layout_marginBottom="67dp"
         android:text="tip!"
         app:layout_constraintBottom_toTopOf="@+id/recyclerview1"
-        app:layout_constraintEnd_toStartOf="@+id/calendarView2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/showDetails" />
+
+    <Button
+        android:id="@+id/dateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="58dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginBottom="152dp"
+        android:text="Date"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerview1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/add"
+        app:layout_constraintTop_toBottomOf="@+id/amount" />
+
+    <TextView
+        android:id="@+id/showDate"
+        android:layout_width="80dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="177dp"
+        android:layout_marginTop="47dp"
+        android:layout_marginEnd="41dp"
+        android:layout_marginBottom="78dp"
+        android:text="No Date Selected"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerview1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tip"
+        app:layout_constraintTop_toBottomOf="@+id/button2" />
+
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentfooter"
+        android:name="com.example.assignment6aaravrathid.FooterFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="164dp"
+        android:layout_marginTop="392dp"
+        android:layout_marginEnd="247dp"
+        android:layout_marginBottom="339dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentheader"
+        android:name="com.example.assignment6aaravrathid.HeaderFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="167dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="244dp"
+        android:layout_marginBottom="707dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
