@@ -56,9 +56,36 @@ class MainFragment : Fragment() {
 
         addButton.setOnClickListener {
             addExpense()
+            showTotal()
         }
 
-        return view
+
+        detailsButton.setOnClickListener {
+
+            if (expenseList.isNotEmpty()) {
+
+                val data = expenseList[0]
+
+                val bundle = Bundle().apply {
+
+                    putString("Amount", data.amount)
+                    putString("expense", data.name)
+                    putString("Date", data.date)
+                }
+
+                val detailsFragment = DetailsFragment()
+                detailsFragment.arguments = bundle
+
+                val transaction = requireActivity().supportFragmentManager.beginTransaction()
+                transaction.replace(
+                    R.id.fragmentContainerView,
+                    detailsFragment
+                )
+                transaction.commit()
+            }
+        }
+
+            return view
     }
 
     fun addExpense() {
@@ -68,16 +95,10 @@ class MainFragment : Fragment() {
         if (name.isNotEmpty() && amountText.isNotEmpty()) {
 
             val newExpense = DataClass(name, amountText, dateView.text.toString())
-
-
             expenseList.add(newExpense)
-
-
             adapter.notifyItemInserted(expenseList.size - 1)
 
-
             saveExpensesToFile(requireContext(), expenseList)
-
 
             expense.text.clear()
             amount.text.clear()
@@ -116,4 +137,12 @@ class MainFragment : Fragment() {
             Log.e("FileStorage", "Error saving tasks: ${e.message}")
         }
     }
+
+    fun showTotal() {
+        val total = expenseList.sumOf { it.amount.toDoubleOrNull() ?: 0.0 }
+
+        (activity as? MainActivity)?.showFooter(total)
+
+    }
+
 }

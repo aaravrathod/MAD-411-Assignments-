@@ -19,5 +19,16 @@
         android:id="@+id/detailsFragment"
         android:name="com.example.assignment6aaravrathid.DetailsFragment"
         android:label="Details Fragment"
-        tools:layout="@layout/details_fragment" />
+        tools:layout="@layout/details_fragment">
+    <argument
+        android:name="expenseName"
+        app:argType="string" />
+    <argument
+        android:name="expenseAmount"
+        app:argType="string" />
+    <argument
+        android:name="expenseDate"
+        app:argType="string"
+        />
+    </fragment>
 </navigation>

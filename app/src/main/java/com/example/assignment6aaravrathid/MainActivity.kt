@@ -1,31 +1,36 @@
 package com.example.assignment6aaravrathid
 
 
-import android.annotation.SuppressLint
-import android.app.DatePickerDialog
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import java.text.DateFormat
-import java.util.Calendar
 
 class MainActivity : AppCompatActivity(){
 
 
+    private var expenseList: MutableList<DataClass> = mutableListOf<DataClass>()
+    private lateinit var adapter: ExpenseAdapter;
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var expense: EditText
+    private lateinit var amount: EditText
+    private lateinit var addButton: Button
+    private lateinit var detailsButton:Button
+    private lateinit var tipButton: Button
+
+    private lateinit var dateButton:Button
+    private lateinit var dateView: TextView
+    private lateinit var footer:FooterFragment
 
 
 
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
             setContentView(R.layout.activity_main)
-
+            footer = supportFragmentManager.findFragmentById(R.id.footer_fragment) as FooterFragment
 
         }
 //        super.onCreate(savedInstanceState)
@@ -109,49 +114,46 @@ class MainActivity : AppCompatActivity(){
        // addFooterFragment()
 
 
+    override fun onStart() {
+        super.onStart()
+        Log.d("ActivityLifecycle", "onStart called")
     }
 
-//
-//    override fun onStart() {
-//        super.onStart()
-//        Log.d("ActivityLifecycle", "onStart called")
-//    }
-//
-//    override fun onResume() {
-//        super.onResume()
-//        Log.d("ActivityLifecycle", "onResume called")
-//    }
-//
-//    override fun onPause() {
-//        super.onPause()
-//        Log.d("ActivityLifecycle", "onPause called")
-//    }
-//
-//    override fun onStop() {
-//        super.onStop()
-//        Log.d("ActivityLifecycle", "onStop called")
-//    }
-//
-//    override fun onDestroy() {
-//        super.onDestroy()
-//        Log.d("ActivityLifecycle", "onDestroy called")
-//
-//
-//
-//    }
-//
-//    private fun totalExpense():Double{
-//        return expenseList.sumByDouble { it.amount.toDoubleOrNull()  ?: 0.0 }
-//    }
-//
-//    private fun  showFooter(){
-//        var total=totalExpense()
-//        footer.getTotal(total)
-//
-//    }
-//
-//
-//
+    override fun onResume() {
+        super.onResume()
+        Log.d("ActivityLifecycle", "onResume called")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d("ActivityLifecycle", "onPause called")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d("ActivityLifecycle", "onStop called")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d("ActivityLifecycle", "onDestroy called")
+
+
+
+    }
+
+    private fun totalExpense():Double{
+        return expenseList.sumByDouble { it.amount.toDoubleOrNull()  ?: 0.0 }
+    }
+
+   fun  showFooter(total: Double) {
+        var total=totalExpense()
+        footer.getTotal(total)
+
+    }
+
+
+
 //    override fun onDateSet(p0: android.widget.DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
 //        val mCalendar: Calendar = Calendar.getInstance()
 //        mCalendar.set(Calendar.YEAR, year)
@@ -162,4 +164,7 @@ class MainActivity : AppCompatActivity(){
 //        dateView?.setText(selectedDate)
 //    }
 
+
+
+}
 

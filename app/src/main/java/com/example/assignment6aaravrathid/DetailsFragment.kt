@@ -16,14 +16,14 @@ class DetailsFragment:Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.details_fragment, container, false)
 
-        //retrieve data
+
         val name=arguments?.getString("Amount")?:"No Amount"
         val amount=arguments?.getString("expense")?:"No Expense"
         val date=arguments?.getString("Date")?:"No Date"
 
 
         view.findViewById<TextView>(R.id.amountDetail).text = name
-        view.findViewById<TextView>(R.id.expenseDetail).text = amount.toString()
+        view.findViewById<TextView>(R.id.expenseDetail).text = amount
         view.findViewById<TextView>(R.id.dateDetail).text = date
         return view
     }
