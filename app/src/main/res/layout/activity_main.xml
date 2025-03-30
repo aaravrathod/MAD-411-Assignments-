@@ -9,7 +9,7 @@
 
 
 
-    <com.google.android.material.textfield.TextInputEditText
+  <!--  <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/expense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -119,7 +119,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toEndOf="@+id/tip"
-        app:layout_constraintTop_toBottomOf="@+id/dateButton" />
+        app:layout_constraintTop_toBottomOf="@+id/dateButton" />-->
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/footer_fragment"
@@ -135,13 +135,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/header_fragment"
-        android:name="com.example.assignment6aaravrathid.HeaderFragment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Aarav Expense App"
-        />
+
+
+
+  <androidx.fragment.app.FragmentContainerView
+      android:id="@+id/fragmentContainerView"
+      android:name="androidx.navigation.fragment.NavHostFragment"
+      android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:navGraph="@navigation/nav_graph"
+       app:defaultNavHost="true" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
