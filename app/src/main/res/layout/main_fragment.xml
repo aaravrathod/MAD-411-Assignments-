@@ -10,11 +10,13 @@
         android:layout_width="323dp"
         android:layout_height="36dp"
         android:layout_marginStart="44dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="68dp"
         android:layout_marginEnd="44dp"
-        android:layout_marginBottom="2dp"
+        android:layout_marginBottom="32dp"
         android:text="Expense Name: "
+        app:layout_constraintBottom_toTopOf="@+id/conversionTextfield"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,9 +28,9 @@
         android:layout_marginEnd="38dp"
         android:text="Amount:"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="-3dp" />
+        tools:layout_editor_absoluteY="16dp" />
 
     <Button
         android:id="@+id/add"
@@ -44,48 +46,90 @@
         app:layout_constraintStart_toEndOf="@+id/showDetails"
         app:layout_constraintTop_toBottomOf="@+id/expense" />
 
+
     <Button
         android:id="@+id/showDetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="26dp"
-        android:layout_marginEnd="53dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="56dp"
         android:text="Details"
         app:layout_constraintBottom_toTopOf="@+id/recyclerView"
         app:layout_constraintEnd_toStartOf="@+id/add"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/expense"
-        app:layout_constraintVertical_bias="0.434" />
+        app:layout_constraintVertical_bias="0.547" />
 
     <Button
         android:id="@+id/showDate"
         android:layout_width="92dp"
         android:layout_height="43dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="568dp"
+        android:layout_marginBottom="32dp"
         android:text="Date"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/add"
         app:layout_constraintTop_toBottomOf="@+id/expense"
-        app:layout_constraintVertical_bias="0.0" />
-
+        app:layout_constraintVertical_bias="0.163" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="250dp"
         android:layout_height="367dp"
         android:layout_marginStart="26dp"
-        android:layout_marginTop="46dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="135dp"
-        android:layout_marginBottom="151dp"
+        android:layout_marginBottom="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/add"
         tools:ignore="MissingConstraints" />
+
+    <CheckBox
+        android:id="@+id/checkBox2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="256dp"
+        android:layout_marginBottom="16dp"
+        android:text="Conversion required"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+
+    <TextView
+        android:id="@+id/conversionTextfield"
+        android:layout_width="327dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="81dp"
+        android:layout_marginBottom="34dp"
+        android:text="Converted Currency"
+        app:layout_constraintBottom_toTopOf="@+id/add"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/expense" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="443dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="14dp"
+        app:layout_constraintBottom_toTopOf="@+id/checkBox2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add" />
 </androidx.constraintlayout.widget.ConstraintLayout>
